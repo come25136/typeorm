@@ -38,7 +38,7 @@ export class DriverFactory {
             case "sap":
                 return new SapDriver(connection);
             case "mariadb":
-                return new MysqlDriver(connection);
+                return new MariaDBDriver(connection);
             case "sqlite":
                 return new SqliteDriver(connection);
             case "better-sqlite3":
