@@ -19,6 +19,7 @@ import {BroadcasterResult} from "../subscriber/BroadcasterResult";
 import {EntitySchema} from "../entity-schema/EntitySchema";
 import {OracleDriver} from "../driver/oracle/OracleDriver";
 import {AuroraDataApiDriver} from "../driver/aurora-data-api/AuroraDataApiDriver";
+import {MariaDBDriver} from "../driver/mariadb/MariadbDriver";
 
 /**
  * Allows to build complex sql queries in a fashion way and execute those queries.
@@ -348,7 +349,7 @@ export class InsertQueryBuilder<Entity> extends QueryBuilder<Entity> {
         }
 
         // add RETURNING expression
-        if (returningExpression && (this.connection.driver instanceof PostgresDriver || this.connection.driver instanceof OracleDriver || this.connection.driver instanceof CockroachDriver)) {
+        if (returningExpression && (this.connection.driver instanceof MariaDBDriver || this.connection.driver instanceof PostgresDriver || this.connection.driver instanceof OracleDriver || this.connection.driver instanceof CockroachDriver)) {
             query += ` RETURNING ${returningExpression}`;
         }
 
